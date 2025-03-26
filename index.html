@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Döviz Kurları Takip</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Logo ve Üst Bar -->
+    <div class="top-bar">
+        <img src="attached_assets/Om.img.png" alt="OM Logo" class="logo">
+        <div id="currency-date" class="currency-date">Tarih yükleniyor...</div>
+    </div>
+
+    <!-- Döviz Çevirici alanı -->
+    <div class="converter-container">
+        <div class="converter-header">
+            <h2>Currency conversion</h2>
+        </div>
+        <input type="number" id="amount" placeholder="Miktar" value="1">
+        <select id="from-currency"></select>
+        <select id="to-currency"></select>
+        <button onclick="convertCurrency()"><i class="fas fa-exchange-alt"></i>Dönüştür</button>
+        <h3 id="result">Sonuç: -</h3>
+    </div>
+
+    <h1>Döviz Kurları Takip</h1>
+
+    <!-- Ana Kontrol Paneli -->
+    <div class="control-panel">
+        <button id="toggleView" class="control-btn primary-btn"><i class="fas fa-expand"></i> Büyük Ekran</button>
+        <button id="showFavorites" class="control-btn primary-btn"><i class="fas fa-star"></i> Favoriler</button>
+        <button id="showCrypto" class="control-btn primary-btn"><i class="fab fa-bitcoin"></i> Kripto</button>
+        <button id="showChart" class="control-btn primary-btn"><i class="fas fa-chart-line"></i> Grafik</button>
+        <button id="showAlarms" class="control-btn primary-btn"><i class="fas fa-bell"></i> Alarmlar</button>
+        <div class="chart-controls">
+            <select id="chartCurrency" class="control-select">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="TRY">TRY</option>
+            </select>
+            <select id="timeframe" class="control-select">
+                <option value="hourly">Saatlik</option>
+                <option value="daily">Günlük</option>
+                <option value="weekly">Haftalık</option>
+                <option value="monthly">Aylık</option>
+            </select>
+            <button id="closeChart" class="control-btn secondary-btn" style="display: none;"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- Grafik Alanı -->
+    <div id="chart-container" style="display: none;">
+        <div class="chart-header">
+            <h3 id="chart-title">Döviz Grafiği</h3>
+            <div class="chart-actions">
+                <button id="compareMode" class="chart-btn"><i class="fas fa-exchange-alt"></i> Karşılaştır</button>
+                <select id="compareCurrency" style="display: none;"></select>
+            </div>
+        </div>
+        <canvas id="rateChart"></canvas>
+    </div>
+    
+    <!-- Alarm Yönetim Paneli -->
+    <div class="alarm-management" id="alarmManagement" style="display: none;">
+        <h3>Aktif Alarmlar</h3>
+        <div id="alarmList" class="alarm-list"></div>
+    </div>
+
+    <!-- Döviz Kurları Kartları -->
+    <div class="currency-grid" id="exchange-rates"></div>
+
+    <!-- Kripto Para Birimleri -->
+    <div class="crypto-section">
+        <h2></h2>
+        <div class="currency-grid" id="crypto-rates"></div>
+    </div>
+
+    <!-- Alarm Ayarları -->
+    <div class="alarm-settings" id="alarmPanel">
+        <h3>Döviz Alarmları</h3>
+        <div class="alarm-form">
+            <select id="alarmCurrency"></select>
+            <input type="number" id="alarmRate" placeholder="Hedef Kur">
+            <button id="setAlarm" class="alarm-btn">Alarm Kur</button>
+        </div>
+    </div>
+
+    <p id="last-updated">Son güncelleme: Yükleniyor...</p>
+
+    <!-- Tema Değiştirme Butonu (Footer) -->
+    <div class="footer">
+        <div class="theme-toggle">
+            <button id="theme-switch">
+                <div class="theme-icon">
+                    <i class="fas fa-moon moon-icon"></i>
+                    <i class="fas fa-sun sun-icon"></i>
+                </div>
+            </button>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/orh4nn.1" target="_blank" class="instagram-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
