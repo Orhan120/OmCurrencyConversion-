@@ -1,0 +1,26 @@
+entrypoint="index.html"
+hidden=[".config"]
+modules = ["nodejs-20", "web:v2-20230623-0b7a606"]
+
+[nix]
+channel = "stable-23_11"
+
+[deployment]
+publicDir = "/"
+deploymentTarget = "static"
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 40886487
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx http-server -p 3000"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
