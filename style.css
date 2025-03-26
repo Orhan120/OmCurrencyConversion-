@@ -1,0 +1,1062 @@
+/* Temel stil ayarları */
+:root {
+    --bg-color: #121212;
+    --text-color: #FFD700;
+    --card-bg: #1d1d1d;
+    --input-bg: #2b2b2b;
+    --accent-color: #FFD700;
+    --accent-hover: #e6c300;
+}
+
+body.light-theme {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --input-bg: #e9e9e9;
+    --accent-color: #007bff;
+    --accent-hover: #0056b3;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+/* Top Bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+/* Logo */
+.logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* Currency Date */
+.currency-date {
+    padding: 8px 15px;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* Footer ve Tema değiştirme butonu */
+.footer {
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 30px;
+    background-color: var(--card-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--accent-color);
+    position: relative;
+}
+
+/* Instagram ikonu */
+.social-icons {
+    position: absolute;
+    right: 20px;
+}
+
+.instagram-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.instagram-link:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.theme-toggle {
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+}
+
+.theme-toggle button {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+    padding: 12px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle button:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.theme-toggle button:active {
+    transform: translateY(1px);
+}
+
+.theme-icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moon-icon, .sun-icon {
+    position: absolute;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.sun-icon {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+}
+
+/* Tema geçiş animasyonları */
+body.light-theme .moon-icon {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+
+body.light-theme .sun-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+/* Tema butonu glow efekti */
+.theme-toggle button::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.theme-toggle button:hover::before {
+    width: 140%;
+    height: 140%;
+    transform: scale(1);
+}
+
+
+
+h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFD700;
+}
+
+/* Döviz Çevirici alanı */
+.converter-container {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 350px;
+    margin: 30px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.converter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.currency-date {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    margin-top: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid var(--accent-color);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-hover);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+input::placeholder {
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5em;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Döviz Kurları */
+.rate-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid var(--accent-color);
+    position: relative;
+}
+
+.large-screen-mode .rate-card {
+    max-width: 400px;
+    padding: 30px;
+}
+
+.large-screen-mode .rate-card h3 {
+    font-size: 32px;
+}
+
+.large-screen-mode .rate-card p {
+    font-size: 24px;
+}
+
+body:not(.large-screen-mode) .rate-card {
+    max-width: 150px;
+    padding: 15px;
+}
+
+body:not(.large-screen-mode) .rate-card h3 {
+    font-size: 18px;
+}
+
+body:not(.large-screen-mode) .rate-card p {
+    font-size: 14px;
+}
+
+.rate-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    border-color: var(--accent-hover);
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.rate-card, .converter-container, h1 {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.rate-card:nth-child(1) { animation-delay: 0.1s; }
+.rate-card:nth-child(2) { animation-delay: 0.2s; }
+.rate-card:nth-child(3) { animation-delay: 0.3s; }
+.rate-card:nth-child(4) { animation-delay: 0.4s; }
+.rate-card:nth-child(5) { animation-delay: 0.5s; }
+.rate-card:nth-child(6) { animation-delay: 0.6s; }
+
+.rate-card h3 {
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+/* Sayfa içeriği için genel geçiş animasyonları */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+}
+
+/* Footer animasyonu */
+.footer {
+    animation: slideInFromBottom 0.8s ease forwards;
+}
+
+/* Tema buton efektleri */
+.theme-toggle button {
+    animation: pulseGlow 3s infinite;
+}
+
+/* Işık tema animasyonu */
+@keyframes lightModeTransition {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+body {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+body.light-theme {
+    background: linear-gradient(120deg, #f5f5f5, #ffffff);
+}
+
+body:not(.light-theme) {
+    background: linear-gradient(120deg, #121212, #1a1a1a);
+}
+
+/* Tema geçiş animasyonları */
+.theme-transition {
+    animation: themeTransition 0.5s ease-in-out;
+}
+
+@keyframes themeTransition {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+}
+
+.rate-card p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.rate-bar-container {
+    height: 10px;
+    background: #333;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.rate-bar {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.green { background-color: #4CAF50; }
+.red { background-color: #F44336; }
+
+.rate-change {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.rate-change.green { 
+    color: #4CAF50; 
+    background-color: rgba(76, 175, 80, 0.1);
+}
+.rate-change.red { 
+    color: #F44336; 
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+.rate-change {
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Döviz kurları grid layout */
+.currency-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.rate-card {
+    flex: 0 0 auto;
+    width: 200px;
+}
+
+/* Son güncelleme bilgisi */
+#last-updated {
+    font-size: 16px;
+    margin-top: 20px;
+    color: var(--bg-color);
+    padding: 12px 20px;
+    background-color: var(--accent-color);
+    display: inline-block;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+/* Kontrol Paneli */
+.control-panel {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.chart-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.control-btn {
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    min-width: 120px;
+}
+
+.primary-btn {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.control-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.control-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.control-btn:hover::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(30, 30);
+        opacity: 0;
+    }
+}
+
+.control-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.control-btn i {
+    transition: transform 0.3s ease;
+}
+
+.control-btn:hover i {
+    transform: scale(1.2);
+}
+
+.control-select {
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid var(--accent-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5em;
+}
+
+.control-select:hover {
+    border-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.control-select:focus {
+    outline: none;
+    border-color: var(--accent-hover);
+    box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.3);
+}
+
+.favorite-btn {
+    position: relative;
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.favorite-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.favorite-btn i {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.favorite-btn i.active {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.favorite-btn:hover {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.favorite-btn:hover::before {
+    transform: scale(1);
+}
+
+.favorite-btn:active {
+    transform: scale(0.9);
+}
+
+#crypto-rates {
+    margin: 20px auto;
+    max-width: 1200px;
+    display: none;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+}
+
+.rate-card {
+    position: relative;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.control-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+/* Grafik Konteyner */
+#chart-container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    height: 450px;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.chart-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chart-btn {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.chart-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* Alarm Yönetim Paneli */
+.alarm-management {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.alarm-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.alarm-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(var(--accent-color-rgb), 0.1);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.alarm-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.alarm-currency {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.alarm-target {
+    font-size: 0.9em;
+}
+
+.alarm-status {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+
+.alarm-delete {
+    background: none;
+    border: none;
+    color: #F44336;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.alarm-delete:hover {
+    transform: scale(1.2);
+}
+
+/* Kripto Bölümü */
+.crypto-section {
+    margin: 40px auto;
+    max-width: 1200px;
+    position: relative;
+}
+
+.crypto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
+}
+
+.favorite-icon {
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    opacity: 0.5;
+}
+
+.favorite-icon.active {
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+.favorite-icon:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+body:not(.large-screen-mode) .rate-card {
+    max-width: 130px;
+    padding: 12px;
+}
+
+body:not(.large-screen-mode) .rate-card h3 {
+    font-size: 16px;
+}
+
+body:not(.large-screen-mode) .rate-card p {
+    font-size: 12px;
+}
+
+/* Alarm Paneli */
+.alarm-settings {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 400px;
+    border: 1px solid var(--accent-color);
+}
+
+.alarm-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.alarm-btn {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.alarm-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.alarm-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.alarm-btn:hover::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.alarm-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Add alarm icon to the button */
+.alarm-btn::after {
+    content: '\f0f3';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: 5px;
+}
+
+/* Büyük Ekran Modu */
+.large-screen-mode .currency-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width: 1400px;
+}
+
+.large-screen-mode .rate-card {
+    padding: 25px;
+}
+
+/* Bildirimler */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease;
+    z-index: 1000;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.notification.fade-out {
+    animation: slideOut 0.3s ease;
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* Responsive ayarlar */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    .converter-container {
+        padding: 15px;
+        max-width: 350px;
+    }
+
+    .converter-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .currency-date {
+        font-size: 10px;
+    }
+
+    input, select, button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .rate-card {
+        padding: 15px;
+        width: 150px;
+    }
+
+    .rate-card h3 {
+        font-size: 20px;
+    }
+
+    .rate-card p {
+        font-size: 16px;
+    }
+
+    .currency-grid {
+        padding: 0 10px;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .instagram-link {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
